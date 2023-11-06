@@ -1,0 +1,245 @@
+რა არის ალგორითმი?
+
+ალგორითმი არის ნაბიჯ-ნაბიჯ პროცედურა ან კარგად განსაზღვრული ინსტრუქციების 
+ნაკრები კონკრეტული პრობლემის გადასაჭრელად ან დავალების შესასრულებლად. (სორტირების ალგორითმი)
+
+რა სირთულის ალგორითმები არსებობს?
+
+მუდმივი სირთულე 
+ლოგარითმული სირთულე
+წრფივი განტოლება
+კვადრატული სირთულე
+კუბური სირთულე
+პოლინომური სირთულე
+ფაქტორიალი
+
+რა არის მონაცემთა სტრუქტურა?
+
+მონაცემთა სტრუქტურა არის ის საშუალებები, რომლების გვეხმარება ოპერაციების ეფექტურად 
+შესასრულებლად, ორგანიზებისა და შენახისთვის.
+
+მაგ: (arrays, lists, stacks, queues, trees, graphs, heaps,)
+
+როგორ ინახება მონაცემები?
+stack - ში ინახება ფუნქციები, ლოკალური ცვლადები და control flow
+heap - ში არის მეხსიერების ნაწილი, რომელიც გამოიყენება მეხსიერების დინამიური განაწილებისთვის,
+ცვლადის ზომებისთვის, ობიექტებისა და მონაცემთა სტრუქტურებისთვის.
+
+Integer Risks: max_int = 2**31 - 1; 
+
+ბიტური ოპერაციები:
+
+1101 & 1010 = 1000 (AND)
+1101 | 1010 = 1111 (OR)
+1101 ^ 1010 = 0111 (XOR)
+~1101 = 0010 (NOT)
+1010 << 2 = 1000
+1101 >> 1 = 0110
+
+___________________________________________________________
+
+def sort_algo(my_list):
+
+    for i in range(5):
+        a = int(input("Enter Your Number: "))
+        my_list.append(a)
+
+    n = len(my_list)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if my_list[j] > my_list[j+1]:
+                # Swap elements if they are in the wrong order
+                my_list[j], my_list[j+1] = my_list[j+1], my_list[j]
+
+    return my_list
+
+my_list = []
+result = sort_algo(my_list)
+print(result)
+___________________________________________________________
+
+def fibonacci(n):
+    if n <= 0:
+        return "Invalid input"
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(3, n + 1):
+            a, b = b, a + b
+        return b
+
+n = int(input("Enter the position in the Fibonacci sequence: "))
+result = fibonacci(n)
+print(f"The {n}-th Fibonacci number is {result}")
+
+___________________________________________________________
+
+def find_max(arr):
+
+    max = arr[0]
+
+    for i in arr:
+        if i > max:
+            max = i
+    
+    return max
+
+my_array = [4, 1, 8, 23, -1]
+max_val = find_max(my_array)
+print(max_val)
+___________________________________________________________
+
+def find_min(arr):
+
+    min = arr[0]
+
+    for i in arr:
+        if i < min:
+            min = i
+    
+    return min
+
+my_array = [ 0, -8, 11, 205]
+min_value = find_min(my_array)
+print(min_value)
+___________________________________________________________
+
+def find_max_three_numbers(arr):
+    
+    first_max = second_max = third_max = float('-inf')
+
+    for num in arr:
+        if num > first_max:
+            third_max = second_max
+            second_max = first_max
+            first_max = num
+        elif num > second_max:
+            third_max = second_max
+            second_max = num
+        elif num > third_max:
+            third_max = num
+
+    return [first_max, second_max, third_max]
+
+arr = [10, 30, 20, 5, 40, 50, 70]
+result = find_max_three_numbers(arr)
+print(result)
+___________________________________________________________
+
+def find_two_minimum(arr):
+    
+    if arr[0] < arr[1]:
+        smallest1, smallest2 = arr[0], arr[1]
+    else:
+        smallest1, smallest2 = arr[1], arr[0]
+
+    for element in arr[2:]:
+        if element < smallest1:
+            smallest2 = smallest1
+            smallest1 = element
+        elif element < smallest2 and element != smallest1:
+            smallest2 = element
+
+    return smallest1, smallest2
+
+
+my_array = [10, 5, 8, 1, 17, 3, 21, 3]
+two_minimum_values = find_two_minimum(my_array)
+
+print(two_minimum_values)
+___________________________________________________________
+
+def power_of_two(n):
+    if 0 <= n <= 31:
+        return 2 ** n
+    else:
+        return "Input out of range. Please enter an integer between 0 and 31."
+        
+n = 5
+result = power_of_two(n)
+print(f"2^{n} = {result}")
+___________________________________________________________
+
+def list_products(my_list):
+
+
+    product = 1
+    for i in my_list:
+        
+        product *= i
+        
+    new_list = list()
+    for i in range (0, len(my_list)):
+        element = product / my_list[i]
+        new_list.append(element)
+
+    return new_list
+
+start_list = (2,3,5)
+result = list_products(start_list)
+print(result)
+___________________________________________________________
+
+def swap_vars(var1, var2):
+
+    var1, var2 = var2, var1
+
+    return var1, var2
+
+var1, var2 = 12, 22
+result = swap_vars(var1, var2)
+print(result)
+___________________________________________________________
+
+def decimal_to_binary(dec):
+
+    bin_res = " "
+
+    while dec > 0:
+        remainder = dec % 2
+        bin_res = str(remainder) + bin_res
+        dec //= 2
+
+    return bin_res
+
+decimal = 53
+result = decimal_to_binary(decimal)
+print(result)
+___________________________________________________________
+
+def find_decimal(bin):
+
+    decimal_num = 0
+    power = 0
+
+    for i in reversed(bin):
+        if i == "1":
+            decimal_num += 2 ** power
+        power += 1
+
+    return decimal_num      
+
+binary = "1101"
+result = find_decimal(binary)
+print(result)
+___________________________________________________________
+
+for letter in 'abcdefghijklmnopqrstuvwxyz':
+    number = ord(letter) - ord('a') + 1
+    print(f"{letter}: {number}")
+___________________________________________________________
+
+alphabets = list('abcdefghijklmnopqrstuvwxyz')
+
+for i in alphabets:
+    print(i)
+
+for i in alphabets:
+    print(i.upper())
+___________________________________________________________
+
+
+___________________________________________________________
